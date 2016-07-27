@@ -1,10 +1,13 @@
 package com.example.uta.myapplication;
 
+import android.content.DialogInterface;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,14 +17,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        Button b = (Button) findViewById(R.id.button);
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MyDialogFragment dialog = new MyDialogFragment();
-                android.app.FragmentManager manager = getFragmentManager();
-                dialog.show(manager, "dialog");
-            }
-        });
+        final EditText editText = new EditText(MainActivity.this);
+        editText.setHint("デフォルト値");
+
+        final EditText editText1 = new EditText(MainActivity.this);
+        editText1.setHint("デフォルト値");
+
+        EditTextDialog dialogFragment = new EditTextDialog();
+        dialogFragment.show(getFragmentManager(), "dialog_fragment");
     }
 }
